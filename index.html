@@ -3,13 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern student task manager for organizing coursework and assignments.">
     <title>Student Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="page-glow page-glow-one"></div>
+    <div class="page-glow page-glow-two"></div>
 
-    <h1>Student Task Manager</h1>
-    <p>Manage your tasks easily.</p>
+    <main class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">✓</span>
+                <div>
+                    <p class="eyebrow">Academic planner</p>
+                    <h1>Student Task Manager</h1>
+                </div>
+            </div>
+            <div class="status-pill" id="taskCount" aria-live="polite">0 tasks</div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow accent">Your study progress</p>
+                <h2>Keep your coursework organized.</h2>
+                <p>Plan assignments, track your progress, and stay focused on what matters most.</p>
+            </div>
+            <div class="hero-card" aria-hidden="true">
+                <span class="mini-label">Today</span>
+                <strong id="completedCount">0</strong>
+                <span>tasks completed</span>
+            </div>
+        </section>
+
+        <section class="task-panel" aria-labelledby="addTaskHeading">
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">New task</p>
+                    <h3 id="addTaskHeading">Add to your list</h3>
+                </div>
+            </div>
+
+            <form id="taskForm" class="task-form">
+                <label class="field">
+                    <span>Task title</span>
+                    <input type="text" id="taskTitle" name="title" placeholder="e.g. Finish chemistry revision" maxlength="80" required>
+                </label>
+
+                <label class="field">
+                    <span>Description</span>
+                    <textarea id="taskDescription" name="description" placeholder="Add a few details, due date, or study notes" rows="3" maxlength="220"></textarea>
+                </label>
+
+                <button type="submit" class="add-button">
+                    <span aria-hidden="true">＋</span>
+                    Add task
+                </button>
+            </form>
+        </section>
+
+        <section class="task-list-section" aria-labelledby="taskListHeading">
+            <div class="list-header">
+                <div>
+                    <p class="eyebrow">Overview</p>
+                    <h3 id="taskListHeading">Your tasks</h3>
+                </div>
+
+                <label class="search-field" for="taskSearch">
+                    <span class="sr-only">Search tasks</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 3a7.5 7.5 0 0 1 5.86 12.8l4.39 4.39 1.41-1.41-4.39-4.39A7.5 7.5 0 1 1 10.5 3Zm0 2a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Z"/></svg>
+                    <input type="search" id="taskSearch" placeholder="Search tasks">
+                </label>
+            </div>
+
+            <div id="emptyState" class="empty-state" hidden>
+                <div class="empty-icon" aria-hidden="true">✓</div>
+                <h4>No tasks yet</h4>
+                <p>Add your first task to begin your study plan.</p>
+            </div>
+
+            <div id="taskList" class="task-list" aria-live="polite"></div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
