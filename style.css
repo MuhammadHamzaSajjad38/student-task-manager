@@ -2,6 +2,8 @@
     --bg: #f5f7ff;
     --surface: rgba(255, 255, 255, 0.9);
     --surface-strong: #fff;
+    --surface: rgba(255, 255, 255, 0.88);
+    --surface-strong: #ffffff;
     --primary: #5b5cf7;
     --primary-dark: #4848d5;
     --primary-soft: #eef0ff;
@@ -11,6 +13,8 @@
     --line: rgba(91, 92, 247, 0.12);
     --success: #25a879;
     --danger: #d54b4b;
+    --line: rgba(91, 92, 247, 0.1);
+    --success: #25b57e;
     --shadow: 0 24px 60px rgba(54, 58, 112, 0.14);
 }
 
@@ -89,6 +93,16 @@ textarea:focus-visible {
 .panel-heading {
     display: flex;
     align-items: center;
+.panel-heading,
+.hero,
+.task-card {
+    display: flex;
+    align-items: center;
+}
+
+.topbar,
+.list-header,
+.panel-heading {
     justify-content: space-between;
     gap: 20px;
 }
@@ -110,6 +124,9 @@ textarea:focus-visible {
     width: 46px;
     height: 46px;
     place-items: center;
+    place-items: center;
+    width: 46px;
+    height: 46px;
     border-radius: 15px;
     background: linear-gradient(135deg, var(--primary), #7b7ef9);
     color: #fff;
@@ -155,6 +172,14 @@ h4 {
     border: 1px solid var(--line);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.72);
+    color: var(--accent);
+}
+
+.status-pill {
+    padding: 10px 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.65);
     color: var(--muted);
     font-size: 0.82rem;
     font-weight: 700;
@@ -169,6 +194,12 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 28px;
     background: linear-gradient(135deg, rgba(76, 78, 224, 0.98), rgba(112, 115, 255, 0.92));
+    justify-content: space-between;
+    gap: 24px;
+    padding: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(91, 92, 247, 0.96), rgba(112, 115, 255, 0.88));
     box-shadow: var(--shadow);
     color: #fff;
 }
@@ -183,11 +214,17 @@ h4 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     letter-spacing: -0.06em;
     line-height: 1.05;
+    max-width: 420px;
+    margin-bottom: 10px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.06em;
 }
 
 .hero-copy > p:last-child {
     max-width: 450px;
     color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 1rem;
     line-height: 1.7;
 }
@@ -205,6 +242,15 @@ h4 {
 
 .mini-label {
     color: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(12px);
+    text-align: center;
+}
+
+.mini-label {
+    color: rgba(255, 255, 255, 0.72);
     font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -218,6 +264,7 @@ h4 {
 
 .hero-card span:last-child {
     color: rgba(255, 255, 255, 0.82);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 0.82rem;
 }
 
@@ -257,6 +304,14 @@ h4 {
     background: var(--surface-strong);
     color: var(--text);
     transition: border-color 160ms ease, box-shadow 160ms ease;
+.search-field input {
+    width: 100%;
+    border: 1px solid rgba(122, 130, 179, 0.18);
+    border-radius: 14px;
+    background: var(--surface-strong);
+    color: var(--text);
+    outline: none;
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .field input,
@@ -279,6 +334,12 @@ h4 {
 .field textarea {
     min-height: 110px;
     resize: vertical;
+    padding: 14px 16px;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 110px;
 }
 
 .field input:focus,
@@ -372,6 +433,7 @@ h4 {
 .task-card:hover {
     transform: translateY(-2px);
     border-color: rgba(91, 92, 247, 0.24);
+    border-color: rgba(91, 92, 247, 0.18);
     box-shadow: 0 14px 30px rgba(68, 76, 128, 0.09);
 }
 
@@ -383,6 +445,10 @@ h4 {
     place-items: center;
     padding: 0;
     border: 2px solid rgba(91, 92, 247, 0.38);
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border: 2px solid rgba(91, 92, 247, 0.35);
     border-radius: 9px;
     background: #fff;
     color: #fff;
@@ -429,6 +495,11 @@ h4 {
 
 .task-content h4 {
     overflow-wrap: anywhere;
+    background: rgba(37, 181, 126, 0.12);
+    color: #128d66;
+}
+
+.task-content h4 {
     font-size: 1.04rem;
 }
 
@@ -460,11 +531,18 @@ h4 {
     transform: translateY(-1px);
     background: rgba(255, 102, 102, 0.16);
     color: #b83232;
+    padding: 9px 14px;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(255, 102, 102, 0.08);
+    color: #d54b4b;
+    font-weight: 700;
 }
 
 .empty-state {
     padding: 52px 18px;
     border: 1px dashed rgba(91, 92, 247, 0.25);
+    border: 1px dashed rgba(91, 92, 247, 0.23);
     border-radius: 20px;
     color: var(--muted);
     text-align: center;
@@ -483,6 +561,7 @@ h4 {
     border-radius: 18px;
     background: var(--primary-soft);
     color: var(--primary);
+    place-items: center;
     font-size: 1.7rem;
     font-weight: 800;
 }
@@ -525,6 +604,22 @@ h4 {
     }
 
     .add-button {
+@media (max-width: 720px) {
+    body {
+        padding-inline: 14px;
+    }
+
+    .hero,
+    .task-form {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        align-items: flex-start;
+        padding: 28px 22px;
+    }
+
+    .hero-card {
         width: 100%;
     }
 
@@ -553,6 +648,20 @@ h4 {
         flex-direction: column;
         gap: 14px;
         margin-bottom: 20px;
+
+    .task-card {
+        align-items: flex-start;
+    }
+
+    .task-delete {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .brand {
@@ -609,5 +718,19 @@ h4 {
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+    .hero-copy h2 {
+        font-size: 2.2rem;
+    }
+
+    .task-form {
+        gap: 14px;
+    }
+
+    .add-button {
+        width: 100%;
+    }
+
+    .task-card {
+        gap: 12px;
     }
 }
