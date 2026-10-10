@@ -83,6 +83,15 @@ function renderTasks(tasks, query = "") {
         .join("");
 
     emptyState.hidden = filteredTasks.length > 0;
+    if (filteredTasks.length === 0) {
+        const isSearchEmpty = query.trim() && tasks.length > 0;
+        emptyState.querySelector("h4").textContent = isSearchEmpty
+            ? "No matching tasks"
+            : "No tasks yet";
+        emptyState.querySelector("p").textContent = isSearchEmpty
+            ? "Try a different search term."
+            : "Add your first task to begin your study plan.";
+    }
     updateSummary(tasks);
 }
 
@@ -122,7 +131,7 @@ function attachEventListeners() {
         saveTasks(tasks);
         form.reset();
         titleInput.focus();
-        renderTasks(tasks);
+        renderTasks(tasks, searchInput?.value || "");
     });
 
     searchInput?.addEventListener("input", (event) => {
